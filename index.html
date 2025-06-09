@@ -2,8 +2,14 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sol de Jasmim | Semijoias Elegantes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     :root {
       --terracota: #E2725B;
@@ -12,161 +18,318 @@
       --preto: #1C1C1C;
       --branco: #FFFFFF;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Helvetica Neue', sans-serif;
     }
-
     body {
-      background-color: var(--terracota-claro);
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--branco);
       color: var(--preto);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
-
     header {
-      background-color: var(--terracota);
-      color: var(--branco);
-      padding: 2rem;
-      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--branco);
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
-
-    header h1 {
-      font-size: 2.5rem;
-      letter-spacing: 2px;
-    }
-
-    .gallery, .catalog {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
+    nav {
       max-width: 1200px;
       margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
     }
-
-    .gallery img, .catalog img {
-      width: 100%;
-      border-radius: 1rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      object-fit: cover;
-      height: 400px;
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--terracota);
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 2px;
     }
-
-    .testimonials {
-      background-color: var(--branco);
-      padding: 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
     }
-
-    .testimonial {
-      margin-bottom: 1.5rem;
-      font-style: italic;
+    nav ul li a {
+      text-decoration: none;
       color: var(--preto);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
     }
-
-    .contact {
-      background-color: var(--terracota);
-      color: var(--branco);
-      padding: 2rem;
-      text-align: center;
+    nav ul li a:hover {
+      color: var(--terracota);
     }
-
-    .contact h2 {
-      margin-bottom: 1rem;
-    }
-
-    .contact form {
-      max-width: 500px;
+    main {
+      padding-top: 80px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
-
-    .contact input, .contact textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-    }
-
-    .contact button {
-      background-color: var(--dourado);
+    .hero {
+      position: relative;
+      height: 450px;
+      background: url('https://images.unsplash.com/photo-1600180758890-d574b889f0c9?auto=format&fit=crop&w=1350&q=80')
+        center/cover no-repeat;
+      border-radius: 1rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--branco);
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-size: 1rem;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      background-color: rgba(226, 114, 91, 0.7);
+      padding: 1rem 3rem;
+      border-radius: 0.75rem;
+    }
+    section.collections {
+      margin-top: 4rem;
+    }
+    section.collections h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--terracota);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .grid-products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background-color: var(--branco);
+      border-radius: 1rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease;
       cursor: pointer;
     }
-
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      padding: 1rem 1.2rem;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
-
+    .product-card img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 1rem 1.5rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+    .product-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--terracota);
+      margin-bottom: 0.5rem;
+    }
+    .contact-section {
+      background-color: var(--terracota-claro);
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+      border-radius: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+    .contact-section h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--terracota);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .contact-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-section input,
+    .contact-section textarea {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+    .contact-section button {
+      background-color: var(--terracota);
+      color: var(--branco);
+      font-weight: 700;
+      padding: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact-section button:hover {
+      background-color: #c9614a;
+    }
     footer {
       background-color: var(--terracota);
       color: var(--branco);
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+    footer a {
+      color: var(--branco);
+      margin: 0 0.7rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #f0d48c;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      font-size: 1.8rem;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1001;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      background-color: #1ebe57;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+        padding: 0.8rem 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Sol de Jasmim</h1>
-    <p>Semijoias com elegância, sofisticação e modernidade</p>
+    <nav>
+      <div class="logo">Sol de Jasmim</div>
+      <ul>
+        <li><a href="#collections">Coleções</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="gallery">
-    <img src="https://via.placeholder.com/400x500?text=Colares" alt="Mulher elegante usando colar dourado">
-    <img src="https://via.placeholder.com/400x500?text=Anéis" alt="Mulher elegante usando anéis dourados">
-    <img src="https://via.placeholder.com/400x500?text=Brincos" alt="Mulher elegante usando brincos dourados">
-    <img src="https://via.placeholder.com/400x500?text=Conjunto" alt="Mulher elegante usando conjunto de semijoias">
-  </section>
+  <main>
+    <section class="hero">
+      <h1>Elegância em Semijoias Douradas</h1>
+    </section>
 
-  <section class="catalog">
-    <img src="https://via.placeholder.com/400x500?text=Catálogo+1" alt="Produto de semijoia catálogo 1">
-    <img src="https://via.placeholder.com/400x500?text=Catálogo+2" alt="Produto de semijoia catálogo 2">
-    <img src="https://via.placeholder.com/400x500?text=Catálogo+3" alt="Produto de semijoia catálogo 3">
-  </section>
+    <section id="collections" class="collections">
+      <h2>Coleções</h2>
+      <div class="grid-products">
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1600180758890-d574b889f0c9?auto=format&fit=crop&w=600&q=80"
+            alt="Brincos Sol de Jasmim"
+          />
+          <div class="product-info">
+            <h3>Brincos Sol de Jasmim</h3>
+          </div>
+        </div>
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+            alt="Colar Delicado"
+          />
+          <div class="product-info">
+            <h3>Colar Delicado</h3>
+          </div>
+        </div>
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=600&q=80"
+            alt="Pulseira Elegante"
+          />
+          <div class="product-info">
+            <h3>Pulseira Elegante</h3>
+          </div>
+        </div>
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1589662717521-90203b784544?auto=format&fit=crop&w=600&q=80"
+            alt="Anel Estiloso"
+          />
+          <div class="product-info">
+            <h3>Anel Estiloso</h3>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="testimonials">
-    <div class="testimonial">"As peças da Sol de Jasmim são maravilhosas, super elegantes!" – Ana Clara</div>
-    <div class="testimonial">"Perfeitas para todas as ocasiões. Recomendo demais!" – Juliana M.</div>
-  </section>
-
-  <section class="contact">
-    <h2>Fale Conosco</h2>
-    <form action="#" method="post">
-      <input type="text" name="nome" placeholder="Seu nome" required />
-      <input type="email" name="email" placeholder="Seu e-mail" required />
-      <textarea name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <a class="whatsapp-button" href="https://wa.me/5599999999999" target="_blank" title="Fale conosco no WhatsApp">💬</a>
+    <section id="contato" class="contact-section">
+      <h2>Contato</h2>
+      <form>
+        <input type="text" placeholder="Nome" required />
+        <input type="email" placeholder="E-mail" required />
+        <textarea rows="4" placeholder="Mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Sol de Jasmim. Todos os direitos reservados. | Siga-nos: 
-    <a href="#" style="color: var(--branco); text-decoration: underline;">Instagram</a> | 
-    <a href="#" style="color: var(--branco); text-decoration: underline;">Facebook</a>
+    <p>© 2025 Sol de Jasmim. Todos os direitos reservados.</p>
+    <p>
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">Pinterest</a>
+    </p>
   </footer>
+
+  <a
+    href="https://wa.me/5511999999999"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="Contato via WhatsApp"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="white"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+    >
+      <path
+        d="M20.52 3.48A11.97 11.97 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.56 4.08 1.55 5.81L0 24l6.43-1.54a11.99 11.99 0 005.57 1.44c6.63 0 12-5.37 12-12 0-3.22-1.26-6.24-3.48-8.42zM12 21.54a9.51 9.51 0 01-4.83-1.34l-.35-.21-3.81.91.92-3.71-.23-.37A9.57 9.57 0 012.43 12a9.57 9.57 0 019.57-9.57c2.56 0 4.97 1 6.77 2.8 1.8 1.8 2.8 4.21 2.8 6.77a9.52 9.52 0 01-9.57 9.54zm5.32-6.52c-.29-.14-1.71-.84-1.98-.94-.27-.1-.47-.14-.67.14s-.77.94-.95 1.13c-.17.19-.35.21-.64.07-1.74-.87-2.88-1.55-4.04-3.46-.3-.52.3-.49.87-1.62.1-.25.04-.47-.02-.66-.06-.18-.67-1.6-.92-2.2-.24-.57-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.66.1-1.01.48c-.35.38-1.33 1.3-1.33 3.18s1.36 3.7 1.55 3.96c.19.26 2.69 4.1 6.53 5.74.91.39 1.62.62 2.18.79.91.28 1.74.24 2.4.15.73-.1 2.23-.91 2.54-1.79.3-.88.3-1.63.21-1.79-.09-.16-.27-.26-.57-.4z"
+      />
+    </svg></a>
 </body>
 </html>
